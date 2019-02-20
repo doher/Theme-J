@@ -1,33 +1,33 @@
 'use strict';
 
 function rotate(el, deg) {
-    el.setAttribute('transform', 'rotate(' + deg + ' 50 50)')
+    el.setAttribute('transform', 'rotate(' + deg + ' 50 50)');
 }
 
 function TClock() {
-    let myView = null;
+    let myView = null,
+        myDiffTime = null;
 
-    this.start = function (view) {
+    this.start = function (view, diffTime) {
         myView = view;
+        myDiffTime = diffTime;
     }
 
     this.updateView = function () {
 
         if (myView) {
-            myView.update();
+            myView.update(myDiffTime);
         }
     }
 }
 
 function TClockViewSVG() {
-    let myModel = null,
-        myField = null,
+    let myField = null,
         sec = null,
         min = null,
         hour = null;
 
-    this.start = function (model, field) {
-        myModel = model;
+    this.start = function (field) {
         myField = field;
 
         hour = myField.querySelector('.hours');
@@ -35,8 +35,9 @@ function TClockViewSVG() {
         sec = myField.querySelector('.seconds');
     }
 
-    this.update = function () {
+    this.update = function (diffTime) {
         let d = new Date();
+        d.setHours(d.getHours() + diffTime);
 
         rotate(sec, 6 * d.getSeconds());
         rotate(min, 6 * d.getMinutes());
@@ -61,30 +62,31 @@ function TClockControllerButtons() {
                 myModel.updateView();
             }, 1000);
         });
-       
+
         stopButton.addEventListener('click', function () {
             clearInterval(timer);
         });
     }
-
 }
 
 let model = new TClock(),
     view = new TClockViewSVG(),
-    controller = new TClockControllerButtons();
+    controller = new TClockControllerButtons(),
+    diffTime = 0;
 
 let container = document.querySelector('.svgClock1');
 
-model.start(view);
-view.start(model, container);
+model.start(view, diffTime);
+view.start(container);
 controller.start(model, container);
 
 let model2 = new TClock(),
     view2 = new TClockViewSVG(),
-    controller2 = new TClockControllerButtons();
+    controller2 = new TClockControllerButtons(),
+    diffTime2 = -8;
 
 let container2 = document.querySelector('.svgClock2');
 
-model2.start(view2);
-view2.start(model2, container2);
+model2.start(view2, diffTime2);
+view2.start(container2);
 controller2.start(model2, container2);
