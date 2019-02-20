@@ -1,15 +1,15 @@
-#face {
+.face {
     stroke-width: 2px;
     stroke: rgb(177, 169, 169);
     fill: #333;
 }
 
-#hour, #minute, #second {
+.hours, .minutes, .seconds {
     stroke-width: 1px;
     fill: #333;
     stroke: #555;
 }
 
-#second {
+.seconds {
     stroke: #f55;
 }

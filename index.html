@@ -6,11 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Clock</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <script src="main.js"></script>
+    <div class="svgClock1">
+        <input class="start" type="button" value="start">
+        <input class="stop" type="button" value="stop">
+        <svg class="clock" viewBox="0 0 100 100">
+            <circle class="face" cx="50" cy="50" r="45" />
+            <g class="hands">
+                <rect class="hours" x="48.5" y="12.5" width="5" height="40" rx="2.5" ry="2.55" />
+                <rect class="minutes" x="48" y="12.5" width="3" height="40" rx="2" ry="2" />
+                <line class="seconds" x1="50" y1="50" x2="50" y2="16" />
+            </g>
+        </svg>
+    </div>
+    <div class="svgClock2">
+        <input class="start" type="button" value="start">
+        <input class="stop" type="button" value="stop">
+        <svg class="clock" viewBox="0 0 100 100">
+            <circle class="face" cx="50" cy="50" r="45" />
+            <g class="hands">
+                <rect class="hours" x="48.5" y="12.5" width="5" height="40" rx="2.5" ry="2.55" />
+                <rect class="minutes" x="48" y="12.5" width="3" height="40" rx="2" ry="2" />
+                <line class="seconds" x1="50" y1="50" x2="50" y2="16" />
+            </g>
+        </svg>
+    </div>
+    <script src="test.js"></script>
 </body>
 
 </html>
