@@ -1,3 +1,16 @@
+body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.minskClock {
+    width: 50%;
+}
+
+.newYorkClock {
+    width: 50%;
+}
+
 .face {
     stroke-width: 2px;
     stroke: rgb(177, 169, 169);
